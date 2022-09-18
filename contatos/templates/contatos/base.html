@@ -1,0 +1,28 @@
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <title>{% block titulo %}{% endblock %}Agenda</title>
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% include '_head.html'%}
+</head>
+
+<body>
+  {% include '_nav.html' %}
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        {% include '_messages.html' %}
+
+        {% block conteudo %} {% endblock %}
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

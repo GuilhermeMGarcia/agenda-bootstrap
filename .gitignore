@@ -1,0 +1,5 @@
+__pycash__/
+*.pyc
+.idea/
+*.*-
+*.sqlite3

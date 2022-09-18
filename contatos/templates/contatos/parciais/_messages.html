@@ -1,0 +1,6 @@
+{% load bootstrap5 %}
+{% if messages %}
+    {% for message in messages %}
+        {% bootstrap_messages %}
+    {% endfor %}
+{% endif %}

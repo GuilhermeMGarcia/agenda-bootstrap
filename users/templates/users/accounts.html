@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block titulo %}Accounts | {% endblock %}
+{% block conteudo %}
+{% if user.is_authenticated %}
+    <li><a>Olá, {{ user.username }}.</a></li>
+    <li><a href="{% url 'users:logout' %}">logout</a></li>
+    <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
+{% else %}
+    <li><a href="{% url 'users:cadastro' %}">Cadastro</a></li>
+    <li><a href="{% url 'users:login' %}">login</a></li>
+{% endif%}
+{% endblock %}

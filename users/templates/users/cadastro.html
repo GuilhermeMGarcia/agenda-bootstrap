@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+{% block titulo %}Cadastro | {% endblock %}
+{% if not user.is_authenticated %}
+    <h1 class="mt-3, mb-3">Cadastro</h1>
+
+    <form method="POST" action="{% url 'users:cadastro'%}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <input type="hidden" name="next" value="{% url 'users:login' %}" />
+    </form>
+{% else %}
+    <li><a>Olá, {{ user.username }}. Voce já está cadastrado!</a></li>
+    <li><a href="{% url 'users:logout' %}">logout</a></li>
+    <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
+{% endif %}
+
+{% endblock %}

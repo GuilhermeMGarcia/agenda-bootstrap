@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  {% include '_search.html' %}
+
+<h1 class="mt-5">Minha agenda</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Telefone</th>
+      <th>Categoria</th>
+      <th>Slug</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for contato in contatos %}
+
+        <tr>
+          <td>
+            <a href="{% url 'contatos:ver_contato' contato.slug %}"> {{ contato.id }}</a>
+          </td>
+          <td>
+            <a href="{% url 'contatos:ver_contato' contato.slug %}"> {{ contato.nome }}</a>
+          </td>
+          <td>{{ contato.sobrenome }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>{{ contato.categoria }}</td>
+          <td>{{ contato.slug }}</td>
+        </tr>
+
+    {% endfor %}
+
+  </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+    {% for pagina in page_obj.paginator.page_range %}
+      {% if page_obj.number == pagina %}
+        <li class="page-item active">
+          <a class="page-link" href="?page={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+        </li>
+      {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+        </li>
+      {% endif %}
+    {% endfor%}
+
+  </ul>
+</nav>
+
+{% endblock %}

@@ -90,7 +90,7 @@ DATABASES = {
 }
 """
 
-
+# Deploy heroku
 DATABASES = {
     'default': dj_database_url.config()
 }

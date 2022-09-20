@@ -90,11 +90,6 @@ DATABASES = {
 }
 """
 
-# Deploy heroku
-DATABASES = {
-    'default': dj_database_url.config()
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -129,12 +124,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+# Deploy heroku
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://localhost')
+}
 
+# Conf static
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Hora os cabeçalho para request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
